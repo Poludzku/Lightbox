@@ -40,6 +40,17 @@
 -keep class com.adobe.mobile.** { *; }
 -dontwarn com.adobe.mobile**
 
+#AppDynamics
+-keep class com.appdynamics.eumagent.runtime.DontObfuscate
+-keep @com.appdynamics.eumagent.runtime.DontObfuscate class * { *; }
+
+-keep class com.tesco.now.app.model.** { *; }
+-keeppackagenames com.tesco.now.app.model
+
+#Stripe
+-keep class com.stripe.** { *; }
+
+-keep class com.google.android.gms.** { *; }
 # Model classes processed by Gson
 #
 # Write a rule like the following one to keep all the classes

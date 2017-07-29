@@ -1,8 +1,6 @@
 apply plugin: 'com.android.application'
 //Backwards copatibility for lambdas
 apply plugin: 'me.tatarka.retrolambda'
-//Required for core Firebase/Google Services functionality
-apply plugin: 'com.google.gms.google-services'
 //Required for custom Firebase crash reporting
 apply plugin: 'com.google.firebase.firebase-crash'
 
@@ -74,11 +72,13 @@ android {
     buildTypes {
         debug {
             minifyEnabled true
+            useProguard false
             debuggable true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         release {
             minifyEnabled true
+            useProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.releaseConfig
         }
@@ -126,8 +126,6 @@ dependencies {
 
     //SIGN IN
     compile "com.google.firebase:firebase-auth:$firebaseVersion"
-    //TODO update to current Firebase version once conflict has been resolved
-    compile "com.google.android.gms:play-services-auth:9.0.0"
 
     //UNIT TESTING
     testCompile "junit:junit:$junitVersion"
