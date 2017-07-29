@@ -2,6 +2,7 @@ package com.poludzku.lightbox.main;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.poludzku.lightbox.R;
@@ -15,8 +16,13 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity implements MainView {
 
+    @BindView(R.id.image_container)
+    ImageView imageContainer;
 
     @Inject
     MainPresenter presenter;
@@ -26,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         ((LightboxApplication)getApplication())
                 .getComponent()
                 .plus(new MainModule(this))
@@ -45,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Override
     public void showImages(List<Image> result) {
+        imageContainer.setImageBitmap(result.get(0).getBitmap());
         Toast.makeText(this, "Number Of Images Loaded " + result.size(), Toast.LENGTH_SHORT).show();
     }
 

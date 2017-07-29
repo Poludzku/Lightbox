@@ -13,7 +13,7 @@ public class LightboxApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        component = DaggerLightboxComponent.builder().lightboxModule(new LightboxModule()).build();
+        component = DaggerLightboxComponent.builder().lightboxModule(new LightboxModule(this)).build();
 
     }
 
