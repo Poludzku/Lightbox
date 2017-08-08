@@ -3,6 +3,7 @@ package com.poludzku.lightbox.browser.tab.view;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.view.ViewGroup;
 import com.poludzku.lightbox.R;
 import com.poludzku.lightbox.browser.tab.di.ImageListModule;
 import com.poludzku.lightbox.browser.view.Browser;
+
+import java.util.ArrayList;
 
 import javax.inject.Inject;
 
@@ -44,14 +47,17 @@ public class ImageListFragment extends Fragment {
                              Bundle savedInstanceState) {
         sortOrder = getArguments().getInt(ARG_SORT_ORDER);
         View rootView = inflater.inflate(R.layout.fragment_browser, container, false);
+        //ButterKnife.bind(this,rootView);
+        imageListView = (RecyclerView) rootView.findViewById(R.id.image_list);
         return rootView;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, this.getActivity());
         ((Browser) getActivity()).getBrowserComponent().plus(new ImageListModule()).inject(this);
+        imageListView.setLayoutManager(new LinearLayoutManager(this.getContext(),LinearLayoutManager.VERTICAL,false));
         imageListView.setAdapter(imageListAdapter);
+        imageListAdapter.setData(new ArrayList<>());
     }
 }

@@ -1,5 +1,6 @@
 package com.poludzku.lightbox.browser.tab.view;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -28,12 +29,14 @@ public class ImageListAdapterImpl extends ImageListAdapter {
 
     @Override
     public ImageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        Log.i(">>>>","onCreateViewHolder");
         return new ImageViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.image_card,parent,false));
     }
 
     @Override
     public void onBindViewHolder(ImageViewHolder holder, int position) {
 
+        Log.i(">>>>","onBindViewHolder");
     }
 
     @Override
