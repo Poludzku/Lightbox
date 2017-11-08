@@ -1,11 +1,8 @@
 package com.poludzku.lightbox.main.presenter;
 
-/**
- * Created by Jacek on 17/07/2017.
- */
+import android.net.Uri;
 
 public interface MainPresenter {
-    void loadImagesByHistory();
 
-    void cancel();
+    void handleViewImageIntent(Uri uri);
 }

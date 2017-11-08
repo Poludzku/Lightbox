@@ -1,39 +1,31 @@
 package com.poludzku.lightbox.app.model;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 
-import java.io.File;
+import com.google.auto.value.AutoValue;
 
 /**
  * Created by Jacek on 17/07/2017.
  */
+@AutoValue
+public abstract class Image {
 
-public class Image {
+    public abstract Bitmap getBitmap();
+    public abstract Transformation getTransformation();
 
-    File imageFile;
+    public abstract Builder toBuilder();
+
+    public static Builder builder() {
+        return new AutoValue_Image.Builder();
+    }
+
+    @AutoValue.Builder
+    public abstract static class Builder{
+        public abstract Builder bitmap(Bitmap bitmap);
+        public abstract Builder transformation(Transformation transformation);
+        public abstract Image build();
+    }
 
     Transformation imageTransformation;
 
-    public Image(File imageFile, Transformation imageTransformation) {
-        this.imageFile = imageFile;
-        this.imageTransformation = imageTransformation;
-    }
-
-    public Bitmap getBitmap(){
-        return BitmapFactory.decodeFile(imageFile.getAbsolutePath());
-    }
-
-    public File getImageFile() {
-        return imageFile;
-    }
-
-    public Transformation getImageTransformation() {
-        return imageTransformation;
-    }
-
-    public static class Transformation {
-        double x;
-        double y;
-    }
 }

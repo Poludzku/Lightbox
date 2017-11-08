@@ -1,11 +1,11 @@
 package com.poludzku.lightbox.app.di;
 
+import android.content.ContentResolver;
 import android.content.Context;
 
-import com.poludzku.lightbox.app.di.scope.PerActivity;
 import com.poludzku.lightbox.app.di.scope.PerApplication;
-import com.poludzku.lightbox.app.repository.ImageRepository;
-import com.poludzku.lightbox.app.repository.MockImageRepository;
+import com.poludzku.lightbox.main.domain.ReadImageFromContentResolver;
+import com.poludzku.lightbox.main.domain.ReadImageFromContentResolverImpl;
 
 import dagger.Module;
 import dagger.Provides;
@@ -24,9 +24,15 @@ public class LightboxModule {
 
     @Provides
     @PerApplication
-    ImageRepository imageRepository(){
-        return new MockImageRepository(context);
+    ContentResolver provideContentResolver() {
+        return context.getContentResolver();
     }
 
+
+    @Provides
+    @PerApplication
+    ReadImageFromContentResolver readImageFromContentResolver(ReadImageFromContentResolverImpl readImageFromContentResolver) {
+        return readImageFromContentResolver;
+    }
 
 }

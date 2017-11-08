@@ -1,47 +1,41 @@
 package com.poludzku.lightbox.main.presenter;
 
-import com.poludzku.lightbox.app.model.Image;
-import com.poludzku.lightbox.main.domain.LoadImagesByHistoryUseCase;
-import com.poludzku.lightbox.main.domain.LoadImagesByHistoryUseCaseCallback;
-import com.poludzku.lightbox.main.view.MainView;
+import android.net.Uri;
+import android.util.Log;
 
-import java.util.List;
+import com.poludzku.lightbox.app.model.Image;
+import com.poludzku.lightbox.main.domain.ReadImageFromContentResolver;
+import com.poludzku.lightbox.main.view.MainView;
 
 import javax.inject.Inject;
 
-/**
- * Created by Jacek on 17/07/2017.
- */
+public class MainPresenterImpl implements MainPresenter, ReadImageFromContentResolver.Callback {
 
-public class MainPresenterImpl implements MainPresenter, LoadImagesByHistoryUseCaseCallback {
-
-    private LoadImagesByHistoryUseCase loadImagesByHistoryUseCase;
+    private ReadImageFromContentResolver readImageFromContentResolver;
     private MainView view;
 
     @Inject
-    public MainPresenterImpl(LoadImagesByHistoryUseCase loadImagesByHistoryUseCase, MainView view) {
-        this.loadImagesByHistoryUseCase = loadImagesByHistoryUseCase;
-        this.loadImagesByHistoryUseCase.setCallback(this);
+    public MainPresenterImpl(ReadImageFromContentResolver readImageFromContentResolver,
+                             MainView view) {
+        this.readImageFromContentResolver = readImageFromContentResolver;
+        this.readImageFromContentResolver.setCallback(this);
         this.view = view;
     }
 
     @Override
-    public void loadImagesByHistory() {
-        loadImagesByHistoryUseCase.execute();
+    public void handleViewImageIntent(Uri uri) {
+        Log.d("uri:",uri.getPath());
+        readImageFromContentResolver.execute(uri);
+
     }
 
     @Override
-    public void onSucces(List<Image> result) {
-        view.showImages(result);
+    public void onSuccess(Image image) {
+        Log.d("image:",image.toString());
     }
 
     @Override
-    public void onFail(Throwable throwable) {
-        view.showError(throwable);
-    }
-
-    @Override
-    public void cancel() {
-        loadImagesByHistoryUseCase.setCallback(null);
+    public void onError(Throwable error) {
+        view.showError(error);
     }
 }

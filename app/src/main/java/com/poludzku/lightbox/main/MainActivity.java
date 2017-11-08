@@ -1,10 +1,11 @@
 package com.poludzku.lightbox.main;
 
-import android.animation.FloatArrayEvaluator;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -46,16 +47,16 @@ public class MainActivity extends AppCompatActivity implements MainView {
         floatingActionButton.setOnClickListener(v -> {
             startActivity(new Intent(this,Browser.class));
         });
+
+        processIntent(getIntent());
     }
 
     @Override
     protected void onResume(){
         super.onResume();
-        presenter.loadImagesByHistory();
     }
     @Override
     protected void onDestroy(){
-        presenter.cancel();
         super.onDestroy();
     }
 
@@ -68,5 +69,17 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Override
     public void showError(Throwable throwable) {
         Toast.makeText(this, "ERROR " + throwable.getMessage(), Toast.LENGTH_LONG).show();
+    }
+
+    private void processIntent(Intent intent) {
+        if(Intent.ACTION_SEND.equals(intent.getAction())&&
+                intent.getType() != null &&
+                intent.getType().startsWith("image/")) {
+            Log.d("intent processing","image found");
+            presenter.handleViewImageIntent(intent.getParcelableExtra(Intent.EXTRA_STREAM));
+        } else {
+            Log.d("intent processing","no image found");
+        }
+
     }
 }
