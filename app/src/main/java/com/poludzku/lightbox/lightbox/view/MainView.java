@@ -1,4 +1,4 @@
-package com.poludzku.lightbox.main.view;
+package com.poludzku.lightbox.lightbox.view;
 
 import com.poludzku.lightbox.app.model.Image;
 

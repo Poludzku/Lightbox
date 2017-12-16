@@ -41,6 +41,6 @@ public class ImageListAdapterImpl extends ImageListAdapter {
 
     @Override
     public int getItemCount() {
-        return 10; //imageList.size();
+        return imageList.size();
     }
 }

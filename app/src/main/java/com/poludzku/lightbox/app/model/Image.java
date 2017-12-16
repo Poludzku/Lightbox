@@ -4,9 +4,6 @@ import android.graphics.Bitmap;
 
 import com.google.auto.value.AutoValue;
 
-/**
- * Created by Jacek on 17/07/2017.
- */
 @AutoValue
 public abstract class Image {
 

@@ -2,10 +2,6 @@ package com.poludzku.lightbox.app.model;
 
 import com.google.auto.value.AutoValue;
 
-/**
- * Created by jacek on 08/11/17.
- */
-
 @AutoValue
 public abstract class Transformation {
 

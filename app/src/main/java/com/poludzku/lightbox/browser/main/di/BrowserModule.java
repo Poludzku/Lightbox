@@ -1,12 +1,11 @@
-package com.poludzku.lightbox.browser.di;
+package com.poludzku.lightbox.browser.main.di;
 
 import android.support.v4.app.FragmentManager;
 
-import com.poludzku.lightbox.browser.view.SectionsPagerAdapter;
+import com.poludzku.lightbox.browser.main.view.SectionsPagerAdapter;
 
 import dagger.Module;
 import dagger.Provides;
-
 
 @Module
 public class BrowserModule {

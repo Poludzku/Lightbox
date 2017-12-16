@@ -11,14 +11,13 @@ import android.view.ViewGroup;
 
 import com.poludzku.lightbox.R;
 import com.poludzku.lightbox.browser.tab.di.ImageListModule;
-import com.poludzku.lightbox.browser.view.Browser;
+import com.poludzku.lightbox.browser.main.view.Browser;
 
 import java.util.ArrayList;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class ImageListFragment extends Fragment {
     private static final String ARG_SORT_ORDER = "sort_order";

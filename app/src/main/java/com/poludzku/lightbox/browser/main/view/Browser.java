@@ -1,4 +1,4 @@
-package com.poludzku.lightbox.browser.view;
+package com.poludzku.lightbox.browser.main.view;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -10,8 +10,8 @@ import android.view.MenuItem;
 
 import com.poludzku.lightbox.R;
 import com.poludzku.lightbox.app.LightboxApplication;
-import com.poludzku.lightbox.browser.di.BrowserComponent;
-import com.poludzku.lightbox.browser.di.BrowserModule;
+import com.poludzku.lightbox.browser.main.di.BrowserComponent;
+import com.poludzku.lightbox.browser.main.di.BrowserModule;
 
 import javax.inject.Inject;
 

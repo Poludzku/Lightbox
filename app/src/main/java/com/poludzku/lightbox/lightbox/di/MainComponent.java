@@ -1,15 +1,12 @@
-package com.poludzku.lightbox.main.di;
+package com.poludzku.lightbox.lightbox.di;
 
 import com.poludzku.lightbox.app.di.scope.PerActivity;
-import com.poludzku.lightbox.main.MainActivity;
+import com.poludzku.lightbox.lightbox.LightboxActivity;
 
 import dagger.Subcomponent;
 
-/**
- * Created by Jacek on 30/06/2017.
- */
 @PerActivity
 @Subcomponent (modules = {MainModule.class})
 public interface MainComponent {
-    void inject(MainActivity mainActivity);
+    void inject(LightboxActivity mainActivity);
 }

@@ -1,13 +1,10 @@
-package com.poludzku.lightbox.browser.view;
+package com.poludzku.lightbox.browser.main.view;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.poludzku.lightbox.browser.tab.view.ImageListFragment;
-
-import javax.inject.Inject;
-
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
