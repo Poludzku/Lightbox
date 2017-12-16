@@ -47,15 +47,35 @@
 -keep class com.tesco.now.app.model.** { *; }
 -keeppackagenames com.tesco.now.app.model
 
-#Stripe
--keep class com.stripe.** { *; }
 
 -keep class com.google.android.gms.** { *; }
-# Model classes processed by Gson
-#
-# Write a rule like the following one to keep all the classes
-# that must be processed automatically by Gson without the need
-# to specify explicit @SerializedName("...") annotations.
-# In this example all the classes under the
-# "com.tesco.now.app.error.registration" package are preserved.
-#-keep class com.tesco.now.app.error.registration.** { *; }
+
+## Android architecture components: Lifecycle
+# LifecycleObserver's empty constructor is considered to be unused by proguard
+-keepclassmembers class * implements android.arch.lifecycle.LifecycleObserver {
+    <init>(...);
+}
+# ViewModel's empty constructor is considered to be unused by proguard
+-keepclassmembers class * extends android.arch.lifecycle.ViewModel {
+    <init>(...);
+}
+# keep Lifecycle State and Event enums values
+-keepclassmembers class android.arch.lifecycle.Lifecycle$State { *; }
+-keepclassmembers class android.arch.lifecycle.Lifecycle$Event { *; }
+# keep methods annotated with @OnLifecycleEvent even if they seem to be unused
+# (Mostly for LiveData.LifecycleBoundObserver.onStateChange(), but who knows)
+-keepclassmembers class * {
+    @android.arch.lifecycle.OnLifecycleEvent *;
+}
+
+-keepclassmembers class * implements android.arch.lifecycle.LifecycleObserver {
+    <init>(...);
+}
+
+-keep class * implements android.arch.lifecycle.LifecycleObserver {
+    <init>(...);
+}
+-keepclassmembers class android.arch.** { *; }
+-keep class android.arch.** { *; }
+-dontwarn android.arch.**
+
