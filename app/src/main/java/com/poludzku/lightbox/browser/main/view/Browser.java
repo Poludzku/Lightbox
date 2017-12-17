@@ -8,8 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
 
 import com.poludzku.lightbox.R;
 import com.poludzku.lightbox.app.LightboxApplication;
@@ -23,8 +21,6 @@ import butterknife.ButterKnife;
 
 public class Browser extends AppCompatActivity {
 
-
-
     @BindView(R.id.container)
     ViewPager mViewPager;
 
@@ -33,6 +29,9 @@ public class Browser extends AppCompatActivity {
 
     @BindView(R.id.tabs)
     TabLayout tabLayout;
+
+    @BindView(R.id.fab)
+    FloatingActionButton floatingActionButton;
 
     @Inject
     SectionsPagerAdapter mSectionsPagerAdapter;
@@ -52,9 +51,12 @@ public class Browser extends AppCompatActivity {
         browserComponent.inject(this);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        mViewPager.addOnPageChangeListener(new FabVisibilityHandler(floatingActionButton));
         mViewPager.setAdapter(mSectionsPagerAdapter);
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+
     }
+
 
 
     @Override
@@ -68,11 +70,8 @@ public class Browser extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        return id == R.id.action_settings || super.onOptionsItemSelected(item);
 
-        return super.onOptionsItemSelected(item);
     }
 
     public BrowserComponent getBrowserComponent() {
