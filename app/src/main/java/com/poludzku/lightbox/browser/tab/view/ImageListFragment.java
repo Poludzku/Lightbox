@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class ImageListFragment extends Fragment {
     private static final String ARG_SORT_ORDER = "sort_order";
@@ -46,8 +47,7 @@ public class ImageListFragment extends Fragment {
                              Bundle savedInstanceState) {
         sortOrder = getArguments().getInt(ARG_SORT_ORDER);
         View rootView = inflater.inflate(R.layout.fragment_browser, container, false);
-        //ButterKnife.bind(this,rootView);
-        imageListView = (RecyclerView) rootView.findViewById(R.id.image_list);
+        ButterKnife.bind(this,rootView);
         return rootView;
     }
 

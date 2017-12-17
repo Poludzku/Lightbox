@@ -1,12 +1,15 @@
 package com.poludzku.lightbox.browser.main.view;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 
 import com.poludzku.lightbox.R;
 import com.poludzku.lightbox.app.LightboxApplication;
