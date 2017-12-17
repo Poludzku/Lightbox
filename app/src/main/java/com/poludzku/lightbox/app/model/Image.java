@@ -1,6 +1,5 @@
 package com.poludzku.lightbox.app.model;
 
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 
@@ -37,5 +36,22 @@ public abstract class Image {
 
         public abstract Image build();
     }
+
+    /**
+     * We recognise images by {@link #uri()}
+     *
+     * @param o
+     * @return true when Uri matches
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Image image = (Image) o;
+
+        return image.uri().equals(uri());
+    }
+
 
 }
