@@ -10,7 +10,7 @@ import dagger.Component;
 
 
 @PerApplication
-@Component(modules = {AppModule.class})
+@Component(modules = {AppModule.class,MemoryRepositoryModule.class})
 public interface AppComponent {
     MainComponent plus(MainModule mainModule);
 
