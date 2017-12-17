@@ -10,7 +10,7 @@ import dagger.Component;
 
 
 @PerApplication
-@Component (modules = {LightboxModule.class})
+@Component (modules = {AppModule.class})
 public interface AppComponent {
     MainComponent plus(MainModule mainModule);
     BrowserComponent plus(BrowserModule browserModule);

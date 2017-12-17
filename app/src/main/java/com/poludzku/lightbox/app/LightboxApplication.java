@@ -4,7 +4,7 @@ import android.app.Application;
 
 import com.poludzku.lightbox.app.di.AppComponent;
 import com.poludzku.lightbox.app.di.DaggerAppComponent;
-import com.poludzku.lightbox.app.di.LightboxModule;
+import com.poludzku.lightbox.app.di.AppModule;
 
 public class LightboxApplication extends Application {
 
@@ -13,7 +13,7 @@ public class LightboxApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        component = DaggerAppComponent.builder().lightboxModule(new LightboxModule(this)).build();
+        component = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
 
     }
 

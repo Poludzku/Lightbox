@@ -1,7 +1,4 @@
 apply plugin: 'com.android.application'
-//Backwards copatibility for lambdas
-apply plugin: 'me.tatarka.retrolambda'
-//Required for custom Firebase crash reporting
 apply plugin: 'com.google.firebase.firebase-crash'
 
 

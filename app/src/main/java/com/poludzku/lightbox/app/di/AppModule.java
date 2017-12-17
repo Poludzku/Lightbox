@@ -9,11 +9,11 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class LightboxModule {
+public class AppModule {
 
     Context context;
 
-    public LightboxModule(Context context) {
+    public AppModule(Context context) {
         this.context = context;
     }
 
