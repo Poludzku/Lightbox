@@ -10,8 +10,9 @@ import dagger.Component;
 
 
 @PerApplication
-@Component (modules = {AppModule.class})
+@Component(modules = {AppModule.class})
 public interface AppComponent {
     MainComponent plus(MainModule mainModule);
+
     BrowserComponent plus(BrowserModule browserModule);
 }

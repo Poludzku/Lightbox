@@ -18,6 +18,6 @@ public class BrowserModule {
 
     @Provides
     SectionsPagerAdapter sectionsPagerAdapter() {
-       return new SectionsPagerAdapter(fragmentManager);
-   }
+        return new SectionsPagerAdapter(fragmentManager);
+    }
 }

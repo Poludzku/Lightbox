@@ -18,7 +18,7 @@ public class MainModule {
 
     @Provides
     @PerActivity
-    MainView mainView(){
+    MainView mainView() {
         return view;
     }
 }

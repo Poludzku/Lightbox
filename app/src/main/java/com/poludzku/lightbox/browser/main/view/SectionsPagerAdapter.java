@@ -4,7 +4,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.poludzku.lightbox.R;
 import com.poludzku.lightbox.browser.tab.view.ImageListFragment;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {

@@ -3,8 +3,8 @@ package com.poludzku.lightbox.app;
 import android.app.Application;
 
 import com.poludzku.lightbox.app.di.AppComponent;
-import com.poludzku.lightbox.app.di.DaggerAppComponent;
 import com.poludzku.lightbox.app.di.AppModule;
+import com.poludzku.lightbox.app.di.DaggerAppComponent;
 
 public class LightboxApplication extends Application {
 

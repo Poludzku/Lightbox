@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.poludzku.lightbox.R;
-import com.poludzku.lightbox.browser.tab.di.ImageListModule;
 import com.poludzku.lightbox.browser.main.view.Browser;
+import com.poludzku.lightbox.browser.tab.di.ImageListModule;
 
 import java.util.ArrayList;
 
@@ -47,7 +47,7 @@ public class ImageListFragment extends Fragment {
                              Bundle savedInstanceState) {
         sortOrder = getArguments().getInt(ARG_SORT_ORDER);
         View rootView = inflater.inflate(R.layout.fragment_browser, container, false);
-        ButterKnife.bind(this,rootView);
+        ButterKnife.bind(this, rootView);
         return rootView;
     }
 
@@ -55,7 +55,7 @@ public class ImageListFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ((Browser) getActivity()).getBrowserComponent().plus(new ImageListModule()).inject(this);
-        imageListView.setLayoutManager(new LinearLayoutManager(this.getContext(),LinearLayoutManager.VERTICAL,false));
+        imageListView.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
         imageListView.setAdapter(imageListAdapter);
         imageListAdapter.setData(new ArrayList<>());
     }

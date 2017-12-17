@@ -45,7 +45,7 @@ public class Browser extends AppCompatActivity {
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
 
-        browserComponent = ((LightboxApplication)getApplication()).getComponent()
+        browserComponent = ((LightboxApplication) getApplication()).getComponent()
                 .plus(new BrowserModule(getSupportFragmentManager()));
 
         browserComponent.inject(this);
@@ -56,7 +56,6 @@ public class Browser extends AppCompatActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
     }
-
 
 
     @Override
