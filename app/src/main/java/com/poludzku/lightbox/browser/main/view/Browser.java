@@ -1,5 +1,6 @@
 package com.poludzku.lightbox.browser.main.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -13,6 +14,7 @@ import com.poludzku.lightbox.R;
 import com.poludzku.lightbox.app.LightboxApplication;
 import com.poludzku.lightbox.browser.main.di.BrowserComponent;
 import com.poludzku.lightbox.browser.main.di.BrowserModule;
+import com.poludzku.lightbox.browser.main.presenter.BrowsePresenter;
 
 import javax.inject.Inject;
 
@@ -36,6 +38,9 @@ public class Browser extends AppCompatActivity {
     @Inject
     SectionsPagerAdapter mSectionsPagerAdapter;
 
+    @Inject
+    BrowsePresenter presenter;
+
     BrowserComponent browserComponent;
 
     @Override
@@ -46,7 +51,7 @@ public class Browser extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         browserComponent = ((LightboxApplication) getApplication()).getComponent()
-                .plus(new BrowserModule(getSupportFragmentManager()));
+                .plus(new BrowserModule(getSupportFragmentManager(),this));
 
         browserComponent.inject(this);
 
@@ -54,6 +59,7 @@ public class Browser extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new FabVisibilityHandler(floatingActionButton));
         mViewPager.setAdapter(mSectionsPagerAdapter);
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+        presenter.signIn();
 
     }
 
@@ -77,4 +83,9 @@ public class Browser extends AppCompatActivity {
         return browserComponent;
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        presenter.handleSignIn(requestCode,resultCode, data);
+    }
 }

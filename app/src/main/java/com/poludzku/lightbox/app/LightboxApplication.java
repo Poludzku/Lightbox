@@ -6,6 +6,8 @@ import com.poludzku.lightbox.app.di.AppComponent;
 import com.poludzku.lightbox.app.di.AppModule;
 import com.poludzku.lightbox.app.di.DaggerAppComponent;
 
+import timber.log.Timber;
+
 public class LightboxApplication extends Application {
 
     private AppComponent component;
@@ -13,6 +15,7 @@ public class LightboxApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Timber.plant(new Timber.DebugTree());
         component = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
 
     }

@@ -23,4 +23,8 @@ public class AppModule {
         return context.getContentResolver();
     }
 
+    @Provides
+    @PerApplication
+    Context context() {return context;}
+
 }
