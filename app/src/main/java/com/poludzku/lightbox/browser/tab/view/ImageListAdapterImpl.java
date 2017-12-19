@@ -37,6 +37,8 @@ public class ImageListAdapterImpl extends ImageListAdapter {
     public void onBindViewHolder(ImageViewHolder holder, int position) {
 
         Log.i(">>>>", "onBindViewHolder");
+        holder.imageView.setImageBitmap(imageList.get(position).bitmap());
+
     }
 
     @Override

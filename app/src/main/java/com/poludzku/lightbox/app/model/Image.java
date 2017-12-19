@@ -1,5 +1,6 @@
 package com.poludzku.lightbox.app.model;
 
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 
@@ -18,6 +19,8 @@ public abstract class Image {
 
     public abstract Uri uri();
 
+    public abstract Bitmap bitmap();
+
     public abstract Transformation transformation();
 
     @Nullable
@@ -29,6 +32,8 @@ public abstract class Image {
     public abstract static class Builder {
 
         public abstract Builder uri(Uri uri);
+
+        public abstract Builder bitmap(Bitmap bitmap);
 
         public abstract Builder transformation(Transformation transformation);
 

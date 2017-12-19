@@ -1,7 +1,10 @@
 package com.poludzku.lightbox.browser.main.view;
 
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.Observer;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -12,8 +15,12 @@ import android.view.MenuItem;
 
 import com.poludzku.lightbox.R;
 import com.poludzku.lightbox.app.LightboxApplication;
+import com.poludzku.lightbox.app.di.qualifier.ForAlbum;
+import com.poludzku.lightbox.app.model.Image;
 import com.poludzku.lightbox.browser.main.di.BrowserComponent;
 import com.poludzku.lightbox.browser.main.di.BrowserModule;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -39,6 +46,7 @@ public class Browser extends AppCompatActivity {
 
     BrowserComponent browserComponent;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +63,7 @@ public class Browser extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new FabVisibilityHandler(floatingActionButton));
         mViewPager.setAdapter(mSectionsPagerAdapter);
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+
 
     }
 
@@ -82,4 +91,6 @@ public class Browser extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+
 }

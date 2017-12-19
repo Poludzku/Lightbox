@@ -6,7 +6,7 @@ import com.poludzku.lightbox.lightbox.LightboxActivity;
 import dagger.Subcomponent;
 
 @PerActivity
-@Subcomponent(modules = {MainModule.class})
-public interface MainComponent {
+@Subcomponent(modules = {LightboxModule.class})
+public interface LightboxComponent {
     void inject(LightboxActivity mainActivity);
 }
