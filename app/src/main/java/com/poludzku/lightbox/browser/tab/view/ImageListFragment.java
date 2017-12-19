@@ -1,6 +1,5 @@
 package com.poludzku.lightbox.browser.tab.view;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
