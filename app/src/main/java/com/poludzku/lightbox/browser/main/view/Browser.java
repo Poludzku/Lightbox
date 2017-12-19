@@ -14,7 +14,6 @@ import com.poludzku.lightbox.R;
 import com.poludzku.lightbox.app.LightboxApplication;
 import com.poludzku.lightbox.browser.main.di.BrowserComponent;
 import com.poludzku.lightbox.browser.main.di.BrowserModule;
-import com.poludzku.lightbox.browser.main.presenter.BrowsePresenter;
 
 import javax.inject.Inject;
 
@@ -38,9 +37,6 @@ public class Browser extends AppCompatActivity {
     @Inject
     SectionsPagerAdapter mSectionsPagerAdapter;
 
-    @Inject
-    BrowsePresenter presenter;
-
     BrowserComponent browserComponent;
 
     @Override
@@ -59,7 +55,6 @@ public class Browser extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new FabVisibilityHandler(floatingActionButton));
         mViewPager.setAdapter(mSectionsPagerAdapter);
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
-        presenter.signIn();
 
     }
 
@@ -86,6 +81,5 @@ public class Browser extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        presenter.handleSignIn(requestCode,resultCode, data);
     }
 }

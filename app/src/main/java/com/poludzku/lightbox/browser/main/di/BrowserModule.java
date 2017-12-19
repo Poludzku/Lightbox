@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.support.v4.app.FragmentManager;
 
 import com.poludzku.lightbox.app.di.scope.PerActivity;
-import com.poludzku.lightbox.browser.main.presenter.BrowsePresenter;
-import com.poludzku.lightbox.browser.main.presenter.BrowsePresenterImpl;
 import com.poludzku.lightbox.browser.main.view.SectionsPagerAdapter;
 
 import dagger.Module;
@@ -34,9 +32,4 @@ public class BrowserModule {
         return activity;
     }
 
-    @Provides
-    @PerActivity
-    BrowsePresenter browsePresenter(BrowsePresenterImpl browsePresenter) {
-        return browsePresenter;
-    }
 }
